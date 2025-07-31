@@ -1,14 +1,12 @@
 from gendiff.documentation import create_parser
-from gendiff import reader
+from gendiff import generate_diff
+
 
 def main():
     parser = create_parser()
     args = parser.parse_args()
-    data1 = reader.get_file_data(args.first_file)
-    data2 = reader.get_file_data(args.second_file)
-
-    print(data1)
-    print(data2)
+    result = generate_diff(args.first_file, args.second_file)
+    print(result)
 
 
 if __name__ == "__main__":
