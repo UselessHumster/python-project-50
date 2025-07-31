@@ -2,8 +2,12 @@ from functools import reduce
 from pathlib import Path
 
 from gendiff.core.reader import get_file_data
-from gendiff.core.utils import (CHANGE_STATUS, make_diff, normalize_data,
-                                format_diff_to_print)
+from gendiff.core.utils import (
+    CHANGE_STATUS,
+    format_diff_to_print,
+    make_diff,
+    normalize_data,
+)
 
 
 def get_difference(data1, data2):
@@ -33,4 +37,4 @@ def generate_diff(file1_path: Path, file2_path: Path):
     data1 = get_file_data(file1_path)
     data2 = get_file_data(file2_path)
     differences = get_difference(data1, data2)
-    return  format_diff_to_print(differences)
+    return format_diff_to_print(differences)

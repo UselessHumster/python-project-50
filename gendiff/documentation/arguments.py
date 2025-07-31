@@ -1,5 +1,6 @@
 import argparse
 
+
 def create_parser():
     parser = argparse.ArgumentParser(prog='gendiff')
     parser.add_argument('-f', '--format', help='set format of output')

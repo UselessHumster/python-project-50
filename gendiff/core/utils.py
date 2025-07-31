@@ -1,6 +1,7 @@
-CHANGE_STATUS = {'minus' : '-',
+CHANGE_STATUS = {'minus': '-',
                  'no changes': ' ',
                  'plus': '+'}
+
 
 def make_diff(status, key, value):
     return {'status': status,
@@ -37,6 +38,4 @@ def format_diff_to_print(differences):
           f"{get_diff_value(diff)}")
          for diff in differences])
 
-    return ('{\n'
-            f'  {diff_txt}\n'
-            '}')
+    return '{\n  %s\n}' % diff_txt
