@@ -2,7 +2,6 @@ VERSION=0.1.1
 PACKAGE=gendiff
 
 create-venv: # Настройка окружения
-	@pip install -r ./requirements.txt
 	@uv venv --python=python3.10
 
 build: # Сборка проекта
