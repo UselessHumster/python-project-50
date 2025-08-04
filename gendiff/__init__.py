@@ -10,9 +10,11 @@ from gendiff.parser import get_difference, parse_data
 from gendiff.reader import get_file_data
 
 
-def generate_diff(file1_path: Path, file2_path: Path, _format='stylish'):
-    tree1 = mktree(parse_data(get_file_data(file1_path)))
-    tree2 = mktree(parse_data(get_file_data(file2_path)))
+def generate_diff(file1_path, file2_path, _format='stylish'):
+    file1 = Path(file1_path)
+    file2 = Path(file2_path)
+    tree1 = mktree(parse_data(get_file_data(file1)))
+    tree2 = mktree(parse_data(get_file_data(file2)))
     differences = get_difference(tree1, tree2)
     if _format == 'plain':
         return format_plain_to_print(differences)
