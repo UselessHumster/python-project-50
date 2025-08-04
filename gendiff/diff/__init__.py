@@ -18,20 +18,41 @@ def mk_complex_diff(name, children, change_status=' '):
             }
 
 
+def mk_updated_diff(name, old_value, new_value):
+    return {'name': name,
+            'from': old_value,
+            'to': new_value,
+            'status': '+-',
+            'type': 'updated'
+            }
+
+
+def get_old_value(updated_diff):
+    return updated_diff['from']
+
+
+def get_new_value(updated_diff):
+    return updated_diff['to']
+
+
 def get_status(diff):
     return diff['status']
+
+
+def is_changed(diff):
+    return not (get_status(diff) == ' ')
 
 
 def get_name(diff):
     return diff['name']
 
 
-def get_value(diff):
-    return diff['value']
+def get_value(flat_diff):
+    return flat_diff['value']
 
 
-def get_children(diff):
-    return diff['children']
+def get_children(complex_diff):
+    return complex_diff['children']
 
 
 def is_flat(diff):
@@ -40,6 +61,18 @@ def is_flat(diff):
 
 def is_complex(diff):
     return diff['type'] == 'complex'
+
+
+def is_updated(diff):
+    return diff['type'] == 'updated'
+
+
+def is_removed(diff):
+    return get_status(diff) == '-'
+
+
+def is_added(diff):
+    return get_status(diff) == '+'
 
 
 def get_diff_by_name(name, children):

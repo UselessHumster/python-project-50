@@ -23,11 +23,6 @@ def parse_data(data):
         if isinstance(value, dict):
             return mk_complex_diff(key, parse_data(value))
 
-        if value is None:
-            value = 'null'
-        if isinstance(value, bool):
-            value = str(value).lower()
-
         return mk_flat_diff(key, value)
     return list(map(normalizer, sorted_data.items()))
 
