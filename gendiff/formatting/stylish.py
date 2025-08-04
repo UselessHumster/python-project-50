@@ -31,6 +31,6 @@ def get_diff_txt(differences, gap=DEFAULT_GAP, gapper=' '):
     return "\n".join(list(reduce(display, differences, [])))
 
 
-def format_full_to_print(differences):
+def format_stylish_to_print(differences):
     diff_txt = get_diff_txt(differences)
     return f'{BRACE_OPEN}\n{diff_txt}\n{BRACE_CLOSE}'

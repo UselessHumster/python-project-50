@@ -1,0 +1,38 @@
+[
+  {
+    "name": "follow",
+    "value": false,
+    "status": "-",
+    "type": "flat"
+  },
+  {
+    "name": "host",
+    "value": "hexlet.io",
+    "status": " ",
+    "type": "flat"
+  },
+  {
+    "name": "proxy",
+    "value": "123.234.53.22",
+    "status": "-",
+    "type": "flat"
+  },
+  {
+    "name": "timeout",
+    "value": 50,
+    "status": "-",
+    "type": "flat"
+  },
+  {
+    "name": "timeout",
+    "value": 20,
+    "status": "+",
+    "type": "flat"
+  },
+  {
+    "name": "verbose",
+    "value": true,
+    "status": "+",
+    "type": "flat"
+  }
+]

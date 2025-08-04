@@ -1,0 +1,199 @@
+[
+  {
+    "name": "common",
+    "children": [
+      {
+        "name": "follow",
+        "value": false,
+        "status": "+",
+        "type": "flat"
+      },
+      {
+        "name": "setting1",
+        "value": "Value 1",
+        "status": " ",
+        "type": "flat"
+      },
+      {
+        "name": "setting2",
+        "value": 200,
+        "status": "-",
+        "type": "flat"
+      },
+      {
+        "name": "setting3",
+        "value": true,
+        "status": "-",
+        "type": "flat"
+      },
+      {
+        "name": "setting3",
+        "value": null,
+        "status": "+",
+        "type": "flat"
+      },
+      {
+        "name": "setting4",
+        "value": "blah blah",
+        "status": "+",
+        "type": "flat"
+      },
+      {
+        "name": "setting5",
+        "children": [
+          {
+            "name": "key5",
+            "value": "value5",
+            "status": " ",
+            "type": "flat"
+          }
+        ],
+        "status": "+",
+        "type": "complex"
+      },
+      {
+        "name": "setting6",
+        "children": [
+          {
+            "name": "doge",
+            "children": [
+              {
+                "name": "wow",
+                "value": "",
+                "status": "-",
+                "type": "flat"
+              },
+              {
+                "name": "wow",
+                "value": "so much",
+                "status": "+",
+                "type": "flat"
+              }
+            ],
+            "status": " ",
+            "type": "complex"
+          },
+          {
+            "name": "key",
+            "value": "value",
+            "status": " ",
+            "type": "flat"
+          },
+          {
+            "name": "ops",
+            "value": "vops",
+            "status": "+",
+            "type": "flat"
+          }
+        ],
+        "status": " ",
+        "type": "complex"
+      }
+    ],
+    "status": " ",
+    "type": "complex"
+  },
+  {
+    "name": "group1",
+    "children": [
+      {
+        "name": "baz",
+        "value": "bas",
+        "status": "-",
+        "type": "flat"
+      },
+      {
+        "name": "baz",
+        "value": "bars",
+        "status": "+",
+        "type": "flat"
+      },
+      {
+        "name": "foo",
+        "value": "bar",
+        "status": " ",
+        "type": "flat"
+      },
+      {
+        "name": "nest",
+        "children": [
+          {
+            "name": "key",
+            "value": "value",
+            "status": " ",
+            "type": "flat"
+          }
+        ],
+        "status": "-",
+        "type": "complex"
+      },
+      {
+        "name": "nest",
+        "value": "str",
+        "status": "+",
+        "type": "flat"
+      }
+    ],
+    "status": " ",
+    "type": "complex"
+  },
+  {
+    "name": "group2",
+    "children": [
+      {
+        "name": "abc",
+        "value": 12345,
+        "status": " ",
+        "type": "flat"
+      },
+      {
+        "name": "deep",
+        "children": [
+          {
+            "name": "id",
+            "value": 45,
+            "status": " ",
+            "type": "flat"
+          }
+        ],
+        "status": " ",
+        "type": "complex"
+      }
+    ],
+    "status": "-",
+    "type": "complex"
+  },
+  {
+    "name": "group3",
+    "children": [
+      {
+        "name": "deep",
+        "children": [
+          {
+            "name": "id",
+            "children": [
+              {
+                "name": "number",
+                "value": 45,
+                "status": " ",
+                "type": "flat"
+              }
+            ],
+            "status": " ",
+            "type": "complex"
+          }
+        ],
+        "status": " ",
+        "type": "complex"
+      },
+      {
+        "name": "fee",
+        "value": 100500,
+        "status": " ",
+        "type": "flat"
+      }
+    ],
+    "status": "+",
+    "type": "complex"
+  }
+]

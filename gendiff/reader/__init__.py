@@ -28,3 +28,7 @@ def get_data_from_json(file):
 
 def get_data_from_yaml(file):
     return yaml.safe_load(open(file))
+
+
+if __name__ == '__main__':
+    print(get_data_from_json('.\\tests\\test_data\\json\\flat1.json'))
