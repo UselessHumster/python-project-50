@@ -1,5 +1,5 @@
 VERSION=0.1.0
-PACKAGE=hexlet-code
+PACKAGE=hexlet_code
 
 create-venv: # Настройка окружения
 	@pip install -r ./requirements.txt
