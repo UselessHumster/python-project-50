@@ -65,7 +65,7 @@ def normalize_value(value):
         return str(value).lower()
     if isinstance(value, list):
         return '[complex value]'
-    if isinstance(value, bool):
+    if isinstance(value, int):
         return str(value)
     if value is None:
         return 'null'
