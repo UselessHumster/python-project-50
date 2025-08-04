@@ -1,5 +1,5 @@
 VERSION=0.1.0
-PACKAGE=gendiff
+PACKAGE=hexlet-code
 
 create-venv: # Настройка окружения
 	@pip install -r ./requirements.txt
