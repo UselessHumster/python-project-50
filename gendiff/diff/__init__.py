@@ -59,7 +59,7 @@ def get_diff_by_name(name, children):
 
 
 def get_children_names(diff: dict):
-    return [get_name(child) for child in diff]
+    return [get_name(child) for child in get_children(diff)]
 
 
 def is_changed(diff):
