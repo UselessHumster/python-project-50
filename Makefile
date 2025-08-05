@@ -2,7 +2,7 @@ VERSION=0.1.0
 PACKAGE=hexlet_code
 
 create-venv: # Настройка окружения
-	@pipx install -r ./requirements.txt
+	@pipx install uv
 	@uv venv --python=python3.10
 
 build: # Сборка проекта
