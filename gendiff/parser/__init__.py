@@ -38,17 +38,14 @@ def has_difference(child1, child2):
 def has_been_removed(child1, child2):
     if not child1:
         return False
-    if child2:
-        if get_value(child1) == get_value(child2):
-            return False
+    if child2 and (get_value(child1) == get_value(child2)):
+        return False
     return True
 
 
 def has_been_added(child1, child2):
-    if child1:
-        if child2:
-            if get_value(child1) == get_value(child2):
-                return False
+    if child1 and child2 and (get_value(child1) == get_value(child2)):
+        return False
     if not child2:
         return False
     return True
@@ -76,16 +73,18 @@ def get_difference(tree1, tree2):
         child1 = get_diff_by_name(name, get_children(tree1))
         child2 = get_diff_by_name(name, get_children(tree2))
 
-        if child1 is None:
-            if is_flat(child2):
-                return check_flat_diff(child1, child2, acc)
+        if child1 is None and is_flat(child2):
+            return check_flat_diff(child1, child2, acc)
+
+        if child2 is None and is_flat(child1):
+            return check_flat_diff(child1, child2, acc)
+
+        if child1 is None and is_complex(child2):
             children = get_children(child2)
             acc.append(mk_complex_diff(name, children, 'added'))
             return acc
 
-        if child2 is None:
-            if is_flat(child1):
-                return check_flat_diff(child1, child2, acc)
+        if child2 is None and is_complex(child1):
             children = get_children(child1)
             acc.append(mk_complex_diff(name, children, 'removed'))
             return acc

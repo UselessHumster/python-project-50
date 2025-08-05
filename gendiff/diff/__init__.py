@@ -59,11 +59,11 @@ def get_diff_by_name(name, children):
 
 
 def get_children_names(diff: dict):
-    return list(map(lambda child: get_name(child), get_children(diff)))
+    return [get_name(child) for child in diff]
 
 
 def is_changed(diff):
-    return not (get_status(diff) == 'not_changed')
+    return get_status(diff) != 'not_changed'
 
 
 def is_flat(diff):
