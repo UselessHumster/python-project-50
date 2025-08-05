@@ -2,37 +2,37 @@
   {
     "name": "follow",
     "value": false,
-    "status": "-",
+    "status": "removed",
     "type": "flat"
   },
   {
     "name": "host",
     "value": "hexlet.io",
-    "status": " ",
+    "status": "not_changed",
     "type": "flat"
   },
   {
     "name": "proxy",
     "value": "123.234.53.22",
-    "status": "-",
+    "status": "removed",
     "type": "flat"
   },
   {
     "name": "timeout",
     "value": 50,
-    "status": "-",
+    "status": "removed",
     "type": "flat"
   },
   {
     "name": "timeout",
     "value": 20,
-    "status": "+",
+    "status": "added",
     "type": "flat"
   },
   {
     "name": "verbose",
     "value": true,
-    "status": "+",
+    "status": "added",
     "type": "flat"
   }
 ]

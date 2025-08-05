@@ -5,37 +5,37 @@
       {
         "name": "follow",
         "value": false,
-        "status": "+",
+        "status": "added",
         "type": "flat"
       },
       {
         "name": "setting1",
         "value": "Value 1",
-        "status": " ",
+        "status": "not_changed",
         "type": "flat"
       },
       {
         "name": "setting2",
         "value": 200,
-        "status": "-",
+        "status": "removed",
         "type": "flat"
       },
       {
         "name": "setting3",
         "value": true,
-        "status": "-",
+        "status": "removed",
         "type": "flat"
       },
       {
         "name": "setting3",
         "value": null,
-        "status": "+",
+        "status": "added",
         "type": "flat"
       },
       {
         "name": "setting4",
         "value": "blah blah",
-        "status": "+",
+        "status": "added",
         "type": "flat"
       },
       {
@@ -44,11 +44,11 @@
           {
             "name": "key5",
             "value": "value5",
-            "status": " ",
+            "status": "not_changed",
             "type": "flat"
           }
         ],
-        "status": "+",
+        "status": "added",
         "type": "complex"
       },
       {
@@ -60,37 +60,37 @@
               {
                 "name": "wow",
                 "value": "",
-                "status": "-",
+                "status": "removed",
                 "type": "flat"
               },
               {
                 "name": "wow",
                 "value": "so much",
-                "status": "+",
+                "status": "added",
                 "type": "flat"
               }
             ],
-            "status": " ",
+            "status": "not_changed",
             "type": "complex"
           },
           {
             "name": "key",
             "value": "value",
-            "status": " ",
+            "status": "not_changed",
             "type": "flat"
           },
           {
             "name": "ops",
             "value": "vops",
-            "status": "+",
+            "status": "added",
             "type": "flat"
           }
         ],
-        "status": " ",
+        "status": "not_changed",
         "type": "complex"
       }
     ],
-    "status": " ",
+    "status": "not_changed",
     "type": "complex"
   },
   {
@@ -99,19 +99,19 @@
       {
         "name": "baz",
         "value": "bas",
-        "status": "-",
+        "status": "removed",
         "type": "flat"
       },
       {
         "name": "baz",
         "value": "bars",
-        "status": "+",
+        "status": "added",
         "type": "flat"
       },
       {
         "name": "foo",
         "value": "bar",
-        "status": " ",
+        "status": "not_changed",
         "type": "flat"
       },
       {
@@ -120,21 +120,21 @@
           {
             "name": "key",
             "value": "value",
-            "status": " ",
+            "status": "not_changed",
             "type": "flat"
           }
         ],
-        "status": "-",
+        "status": "removed",
         "type": "complex"
       },
       {
         "name": "nest",
         "value": "str",
-        "status": "+",
+        "status": "added",
         "type": "flat"
       }
     ],
-    "status": " ",
+    "status": "not_changed",
     "type": "complex"
   },
   {
@@ -143,7 +143,7 @@
       {
         "name": "abc",
         "value": 12345,
-        "status": " ",
+        "status": "not_changed",
         "type": "flat"
       },
       {
@@ -152,15 +152,15 @@
           {
             "name": "id",
             "value": 45,
-            "status": " ",
+            "status": "not_changed",
             "type": "flat"
           }
         ],
-        "status": " ",
+        "status": "not_changed",
         "type": "complex"
       }
     ],
-    "status": "-",
+    "status": "removed",
     "type": "complex"
   },
   {
@@ -175,25 +175,25 @@
               {
                 "name": "number",
                 "value": 45,
-                "status": " ",
+                "status": "not_changed",
                 "type": "flat"
               }
             ],
-            "status": " ",
+            "status": "not_changed",
             "type": "complex"
           }
         ],
-        "status": " ",
+        "status": "not_changed",
         "type": "complex"
       },
       {
         "name": "fee",
         "value": 100500,
-        "status": " ",
+        "status": "not_changed",
         "type": "flat"
       }
     ],
-    "status": "+",
+    "status": "added",
     "type": "complex"
   }
 ]

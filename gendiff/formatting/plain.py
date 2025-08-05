@@ -15,7 +15,7 @@ from gendiff.diff import (
     mk_complex_diff,
     mk_updated_diff,
 )
-from gendiff.formatting.utils import PLAINT_TXT_STATUS as TXT_STATUS
+from gendiff.formatting.utils import NAME_SEPARATOR
 
 
 def get_updates_values(old_diff, new_diff):
@@ -34,16 +34,14 @@ def get_updates_values(old_diff, new_diff):
 
 def normalize_diffs_for_plain(differences):
     def updated_to_one(acc: list, diff):
-        if not acc:
-            previous_diff_name = ''
-            previous_diff = ''
-        else:
+        previous_diff_name = ''
+        if acc:
             previous_diff = acc[-1]
             previous_diff_name = get_name(previous_diff)
+
         name = get_name(diff)
         if previous_diff_name == get_name(diff):
-            acc.pop()
-            old, new = get_updates_values(previous_diff, diff)
+            old, new = get_updates_values(acc.pop(), diff)
             acc.append(mk_updated_diff(name, old, new))
             return acc
 
@@ -74,7 +72,7 @@ def normalize_value(value):
 
 def generate_plain_changes(diff, name):
     status = get_status(diff)
-    diff_txt = f"Property '{name}' was {TXT_STATUS[status]}"
+    diff_txt = f"Property '{name}' was {status}"
     if is_updated(diff):
         old_value = normalize_value(get_old_value(diff))
         new_value = normalize_value(get_new_value(diff))
@@ -97,7 +95,7 @@ def get_diff_txt(differences, parent_name, separator):
             acc.append(generate_plain_changes(diff, name))
             return acc
         children = get_children(diff)
-        acc.append(get_diff_txt(children, name, '.'))
+        acc.append(get_diff_txt(children, name, NAME_SEPARATOR))
         return acc
 
     return flatten(list(reduce(display, differences, [])))
@@ -106,7 +104,3 @@ def get_diff_txt(differences, parent_name, separator):
 def format_plain_to_print(differences):
     differences = normalize_diffs_for_plain(differences)
     return "\n".join(get_diff_txt(differences, '', ''))
-
-
-if __name__ == '__main__':
-    pass

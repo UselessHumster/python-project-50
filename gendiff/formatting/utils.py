@@ -1,7 +1,9 @@
-DEFAULT_GAP = 2
+GAP_COUNT = 2
+GAP = ' '
 BRACE_OPEN = '{'
 BRACE_CLOSE = '}'
+NAME_SEPARATOR = '.'
 
-PLAINT_TXT_STATUS = {'+': 'added',
-                     '-': 'removed',
-                     '+-': 'updated'}
+STYLISH_TXT_STATUS = {'added': '+',
+                     'removed': '-',
+                     'not_changed': ' '}
