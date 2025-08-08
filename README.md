@@ -96,7 +96,8 @@ gendiff file1.json file2.json
 }
 ```
 
-For other formats use `-f` or `--format` keys:
+For other formats use `-f` or `--format` keys
+
 Example:
 ```bash
 gendiff file1.json file2.json --format plain
