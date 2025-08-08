@@ -1,5 +1,7 @@
 import json
+
 import pytest
+
 from gendiff import generate_diff
 from tests.utils import (
     COMPLEX1_JSON,
