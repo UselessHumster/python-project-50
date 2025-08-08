@@ -21,9 +21,3 @@ def generate_diff(file1_path, file2_path, _format='stylish'):
     if _format == 'json':
         return format_json_to_print(differences)
     return format_stylish_to_print(differences)
-
-
-
-
-
-

@@ -1,6 +1,7 @@
 from functools import reduce
 
 from gendiff.diff import (
+    Type,
     flatten,
     get_children,
     get_name,
@@ -12,8 +13,7 @@ from gendiff.diff import (
     is_changed,
     is_flat,
     is_updated,
-    mk_complex_diff,
-    mk_updated_diff,
+    mk_diff,
 )
 from gendiff.formatting.utils import NAME_SEPARATOR
 
@@ -32,7 +32,7 @@ def get_updates_values(old_diff, new_diff):
     return old_value, new_value
 
 
-def normalize_diffs_for_plain(differences):
+def prepare_diffs_for_plain(differences):
     def updated_to_one(acc: list, diff):
         previous_diff_name = ''
         if acc:
@@ -42,7 +42,7 @@ def normalize_diffs_for_plain(differences):
         name = get_name(diff)
         if previous_diff_name == get_name(diff):
             old, new = get_updates_values(acc.pop(), diff)
-            acc.append(mk_updated_diff(name, old, new))
+            acc.append(mk_diff(name, (old, new), Type.updated))
             return acc
 
         if is_flat(diff):
@@ -50,12 +50,12 @@ def normalize_diffs_for_plain(differences):
             return acc
 
         children = get_children(diff)
-        new_children = normalize_diffs_for_plain(children)
+        new_children = prepare_diffs_for_plain(children)
         status = get_status(diff)
-        acc.append(mk_complex_diff(name, new_children, status))
+        acc.append(mk_diff(name, new_children, Type.complex, status))
         return acc
 
-    return list(reduce(updated_to_one, differences, []))
+    return reduce(updated_to_one, differences, [])
 
 
 def normalize_value(value):
@@ -71,7 +71,7 @@ def normalize_value(value):
 
 
 def generate_plain_changes(diff, name):
-    status = get_status(diff)
+    status = get_status(diff).name
     diff_txt = f"Property '{name}' was {status}"
     if is_updated(diff):
         old_value = normalize_value(get_old_value(diff))
@@ -98,9 +98,9 @@ def get_diff_txt(differences, parent_name, separator):
         acc.append(get_diff_txt(children, name, NAME_SEPARATOR))
         return acc
 
-    return flatten(list(reduce(display, differences, [])))
+    return flatten(reduce(display, differences, []))
 
 
 def format_plain_to_print(differences):
-    differences = normalize_diffs_for_plain(differences)
+    differences = prepare_diffs_for_plain(differences)
     return "\n".join(get_diff_txt(differences, '', ''))

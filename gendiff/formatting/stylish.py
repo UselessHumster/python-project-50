@@ -2,7 +2,6 @@ from functools import reduce
 
 from gendiff.diff import get_children, get_name, get_status, get_value, is_flat
 from gendiff.formatting.utils import BRACE_CLOSE, BRACE_OPEN, GAP, GAP_COUNT
-from gendiff.formatting.utils import STYLISH_TXT_STATUS as TXT_STATUS
 
 
 def normalize_value(value):
@@ -15,7 +14,7 @@ def normalize_value(value):
 
 def get_diff_txt(differences, gap_count=GAP_COUNT, gap=GAP):
     def display(acc, diff):
-        status = TXT_STATUS[get_status(diff)]
+        status = get_status(diff).value
         name = get_name(diff)
         if is_flat(diff):
             value = normalize_value(get_value(diff))
@@ -28,7 +27,7 @@ def get_diff_txt(differences, gap_count=GAP_COUNT, gap=GAP):
                    f"{gap * gap_count}  {BRACE_CLOSE}")
         return acc
 
-    return "\n".join(list(reduce(display, differences, [])))
+    return "\n".join(reduce(display, differences, []))
 
 
 def format_stylish_to_print(differences):

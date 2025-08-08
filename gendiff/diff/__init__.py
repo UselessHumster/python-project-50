@@ -1,30 +1,44 @@
+from enum import Enum
+
+
+class Status(Enum):
+    not_changed = ' '
+    updated = '+-'
+    added = '+'
+    removed = '-'
+
+
+class Type(Enum):
+    flat = 'flat'
+    complex = 'complex'
+    updated = 'updated'
+
+
+def mk_diff(name, value, _type: Type | str, status=Status.not_changed):
+    if _type == Type.flat or _type == Type.flat.name:
+        return {'name': name,
+                'value': value,
+                'status': status,
+                'type': _type
+                }
+    elif _type == Type.complex or _type == Type.complex.name:
+        return {'name': name,
+                'children': value,
+                'status': status,
+                'type': _type
+                }
+    elif _type == Type.updated or _type == Type.updated.name:
+        old_value, new_value = value[0], value[1]
+        return {'name': name,
+                'from': old_value,
+                'to': new_value,
+                'status': Status.updated,
+                'type': _type
+                }
+
+
 def mktree(children):
-    return mk_complex_diff('/', children)
-
-
-def mk_flat_diff(name, value, change_status='not_changed'):
-    return {'name': name,
-            'value': value,
-            'status': change_status,
-            'type': 'flat'
-            }
-
-
-def mk_complex_diff(name, children, change_status='not_changed'):
-    return {'name': name,
-            'children': children,
-            'status': change_status,
-            'type': 'complex'
-            }
-
-
-def mk_updated_diff(name, old_value, new_value):
-    return {'name': name,
-            'from': old_value,
-            'to': new_value,
-            'status': 'updated',
-            'type': 'updated'
-            }
+    return mk_diff('/', children, _type=Type.complex)
 
 
 def get_old_value(updated_diff):
@@ -35,7 +49,7 @@ def get_new_value(updated_diff):
     return updated_diff['to']
 
 
-def get_status(diff):
+def get_status(diff) -> Status:
     return diff['status']
 
 
@@ -63,27 +77,29 @@ def get_children_names(diff: dict):
 
 
 def is_changed(diff):
-    return get_status(diff) != 'not_changed'
+    return get_status(diff) != Status.not_changed
 
 
 def is_flat(diff):
-    return diff['type'] == 'flat'
+    return diff['type'] == Type.flat
 
 
 def is_complex(diff):
-    return diff['type'] == 'complex'
+    if diff is None:
+        return False
+    return diff['type'] == Type.complex
 
 
 def is_updated(diff):
-    return diff['type'] == 'updated'
+    return diff['type'] == Type.updated
 
 
 def is_removed(diff):
-    return get_status(diff) == 'removed'
+    return get_status(diff) == Status.removed
 
 
 def is_added(diff):
-    return get_status(diff) == 'added'
+    return get_status(diff) == Status.added
 
 
 def flatten(tree):
