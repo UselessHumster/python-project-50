@@ -29,5 +29,4 @@ def prepare_differences_for_json(differences):
 
 def format_json_to_print(differences: list):
     diffs = prepare_differences_for_json(differences)
-    print(diffs)
     return json.dumps(diffs, indent=2)
