@@ -15,26 +15,29 @@ class Type(Enum):
 
 
 def mk_diff(name, value, _type: Type | str, status=Status.not_changed):
-    if _type == Type.flat or _type == Type.flat.name:
-        return {'name': name,
-                'value': value,
-                'status': status,
-                'type': _type
-                }
-    elif _type == Type.complex or _type == Type.complex.name:
-        return {'name': name,
-                'children': value,
-                'status': status,
-                'type': _type
-                }
-    elif _type == Type.updated or _type == Type.updated.name:
-        old_value, new_value = value[0], value[1]
-        return {'name': name,
-                'from': old_value,
-                'to': new_value,
-                'status': Status.updated,
-                'type': _type
-                }
+    match _type:
+        case Type.flat | Type.flat.name:
+            return {'name': name,
+                    'value': value,
+                    'status': status,
+                    'type': _type
+                    }
+        case Type.complex | Type.complex.name:
+            return {'name': name,
+                    'children': value,
+                    'status': status,
+                    'type': _type
+                    }
+        case Type.updated | Type.updated.name:
+            old_value, new_value = value[0], value[1]
+            return {'name': name,
+                    'from': old_value,
+                    'to': new_value,
+                    'status': Status.updated,
+                    'type': _type
+                    }
+        case _:
+            raise Exception(f'Unknown type {_type}')
 
 
 def mktree(children):
@@ -51,6 +54,10 @@ def get_new_value(updated_diff):
 
 def get_status(diff) -> Status:
     return diff['status']
+
+
+def get_type(diff) -> Type:
+    return diff['type']
 
 
 def get_name(diff):

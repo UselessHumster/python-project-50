@@ -16,6 +16,10 @@ def generate_diff(file1_path, file2_path, _format='stylish'):
     tree1 = mktree(parse_data(get_file_data(file1)))
     tree2 = mktree(parse_data(get_file_data(file2)))
     differences = get_difference(tree1, tree2)
+    return formatting(differences, _format)
+
+
+def formatting(differences, _format):
     if _format == 'plain':
         return format_plain_to_print(differences)
     if _format == 'json':
